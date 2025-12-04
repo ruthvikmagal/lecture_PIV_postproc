@@ -1,0 +1,166 @@
+\documentclass[a4paper,12pt]{article}
+
+% Language setting
+% Replace `english' with e.g. `spanish' to change the document language
+\usepackage[english]{babel}
+
+% Set page size and margins
+% Replace `letterpaper' with `a4paper' for UK/EU standard size
+\usepackage[letterpaper,top=2cm,bottom=2cm,left=3cm,right=3cm,marginparwidth=1.75cm]{geometry}
+
+% Useful packages
+\usepackage{amsmath}
+\usepackage{graphicx}
+\usepackage[colorlinks=true, allcolors=blue]{hyperref}
+\usepackage{epstopdf, epsfig}
+\usepackage{tikz}
+\usepackage{float}
+\usetikzlibrary{positioning}
+\usepackage{amsmath,bm}
+\usepackage{placeins}
+%\modulolinenumbers[5]
+\usepackage{framed} % Framing content
+\usepackage{multicol} % Multiple columns environment
+\usepackage{nomencl}
+\usepackage{color,soul}
+%\usepackage{gensymb}
+\makenomenclature
+\usepackage{amssymb}
+\usepackage[normalem]{ulem}
+\title{PIV laboratory Instructions}
+\author{Gabriele Bellani, Lorenzo Lazzarini, Rithvik Magal}
+
+\begin{document}
+\maketitle
+
+%\begin{abstract}
+%Your abstract.
+%\end{abstract}
+
+\section*{Introduction}
+
+The present laboratory is the second of the two laboratory experiences organised as part of the course of Experimental Methods in Aerodynamics of the Master of Aerospace Engineering of University of Bologna. This laboratory aims to consolidate through hands-on experience the theoretical background provided in the previous classroom lectures. In particular, in this lab the students will set up an imaging system to perform Particle Image Velocimetry (PIV) measurements in a planar jet flow. \\
+
+Key objectives of this activity include learning: to setup and calibrate an optical setup for flow visualisation and velocimetry; to understand the basic layout of an imaging system and optics; to determine the main acquisition parameters; to perform planar PIV at two streamwise positions in a planar jet flow; to analyse snapshot pairs and extract statistically significant variables (e.g. mean values, correlation coefficient, etc) and the associated uncertainties. \\
+
+The experiments will be carried out at planar jet facility at the CICLoPE Laboratory. CICLoPE is an international research infrastructure designed to perform measurements in high-Reynolds number flows with maximum accuracy, and it is equipped with state-of-the-art instrumentation for measurements in turbulent flows to prepare a professional technical report on scientific data.
+
+\section*{Tasks overview}
+The students will be divided in groups
+The following tasks will be performed during this laboratory session:
+\begin{enumerate}
+\item Setup the laser sheet and calibrate the imaging setup.
+\item Use the imaging setup to perform planar two-component velocity measurements in the planar jet flow.
+\item Iteratively fine-tune the $\Delta t$ and seeding parameters.
+\end{enumerate}
+
+\section*{Experimental setup}
+\subsection*{Test Facility}
+The figure below illustrates the configuration of the \emph{Planar Air Tunnel (PAT)}, designed for precise airflow analysis. The setup includes a blower unit, settling chamber, contraction section, and a test section equipped with flow measurement devices.
+
+\begin{figure}[ht]
+	\centering
+	\includegraphics[width=0.9\linewidth,keepaspectratio]{PAT_scheme.png}
+	\caption{Planar Jet Facility layout}
+	\label{fig:PAT}
+\end{figure}
+
+The system begins with a \emph{blower unit} generating the airflow, followed by a \emph{settling chamber} containing flow-straightening elements to reduce turbulence. A \emph{contraction section} accelerates the flow, ensuring a stable and uniform velocity profile at the exit. The present contraction has a section height of $0.02$m ($2$cm). 
+
+\subsection*{PIV system}
+The provided low-speed PIV system consists of the following components:
+\begin{itemize}
+    \item \textbf{Laser}: A dual cavity laser with an emission wavelength of $532 nm$ and a maximum repitition rate of $15 Hz$ with a pulse energy of $200 mJ$. The laser is mounted with a beam guide arm and light sheet optics capable of forming a laser sheet of $\approx 1mm$ thickness.
+    \item \textbf{Camera}: $5.5$ megapixel scientific CMOS sensor with $6.5 \mu m$ pixel pitch.
+    \item \textbf{Imaging optics}: Zeiss $50 mm$ f/$1.4$ lens.
+    \item \textbf{Tracer particles}: Glycol-based fog fluid with resulting particle size of $1 \mu m$.
+    \item \textbf{Synchroniser and PC}: A synchroniser is used to coordinate laser and camera activity and a PC is used to acquire images.
+\end{itemize}
+
+\section*{Experimental Activity}
+\subsection*{Laser Sheet Setup}
+The first step of the experimental activity involves the positioning and focusing the laser sheet at the desired position. The light sheet optics responsible for expanding the beam into a diverging sheet are mounted to the guiding arm. The light sheet optics may be positioned at the required stream-wise and span-wise position using the optics holder. Once the sheet has been positioned and aligned with the jet stream-wise axis, the thickness of the laser sheet may be measured using graph paper and the focus dial of the optics may be used to focus the beam and obtain minimum beam thickness at the measurement area. 
+
+\subsection*{Optical Setup}
+The PIV camera and optics need to be positioned and focused on the plane of the laser sheet. In order to minimise capturing out of plane particles, it is recommended to acquire with minimum depth of field allowed by the lens. The plane focus is set using smoke particles in stationary air by manipulating the focus ring of the lens. Once the lens focus has been determined, the calibration target is used to obtain the magnification factor.
+
+\subsection*{Acquisition}
+A laser sheet is formed downstream of the convergent with an optical field of view (normalised by the jet diameter) of $10 D$ to $25 D$  is chosen for planar PIV acquisitions. The acquisition activity also entails selection of a seeding strategy, selection of the time between snapshots and selection of total acquisition time.
+
+\section*{Data analysis}
+Students must carry out and report on the following data processing workflow:
+\begin{enumerate}
+    \item \textbf{Masking}: Removal of areas of no interest or poor optical quality (reflections), if any. 
+    \item \textbf{Background removal}: A mean image may be computed to be subtracted from the image series, thus removing the background. Best practice: Acquire a dedicated image for background removal if possible.
+    \item \textbf{Contrast enhancement}: Optional. Contrast enhancement enables easier identification of particles.
+    \item \textbf{Calibration}: The imaging system needs to be calibrated for velocity computation, thus requiring the mm/px and $\Delta t$ values. Calibration is performed using images of a calibration target.
+    \item \textbf{Interrogation area}: Selection of the interrogation area dimensions requires knowledge of approximate pixel displacement, seeding and the target resolution of the velocity field. Best practice: Start from larger IA and reduce dimensions.
+    \item \textbf{Final Validation}: The post-processed velocity fields need to be free of outlier data. To this effect, validation checks are performed (refer Appendix 2).
+    \item \textbf{Time averaged velocity}: The processed image series is finally used to compute a time-averaged velocity field. 
+    \item \textbf{Jet spread}: The time-averaged velocity field is used to calculate the jet spreading rate via the jet half-height (refer Appendix C).
+\end{enumerate}
+
+
+\section*{Report instructions} 
+Students must prepare a report that respects the IMRaD (Introduction - Methodology - Results and Discussion) standard structure used in scientific and technical reporting:
+\begin{enumerate}
+\item Introduction: Should describe the context, motivation and objectives of the lab activity.
+\item Methodology: Description of the experimental setup and data acquisition system, calibration and analysis methods. 
+\item Results: Present our results objectively with figures and tables clearly described with captions and text.
+\item: Discussion: Present a synthetic interpretation of the results in relation to theoretical models or existing literature and if needed, explain unexpected results.
+\end{enumerate}
+
+\section*{Appendix A: Estimation of $\Delta t$}
+Let us assume we have the following estimates available:
+\begin{enumerate}
+    \item Imaging system calibration coefficient 'R' (mm/px)
+    \item Target Interrogation Area 'IA' dimension (px)
+    \item Target displacement (fraction of IA) 's' (non-dimensional)
+    \item Expected flow velocity 'v' (mm/s) 
+\end{enumerate}
+
+The $\Delta t$ may be found as follows:
+\begin{equation}
+    \Delta t = \frac{IA (px)}{s} \times R (mm/px) \times \frac{1}{v (mm/s)}
+\end{equation}
+
+\textbf{Example calculation}: Considering a flow velocity of 5 m/s, a calibration coefficient of 0.05 mm/px and the rule of thumb of one-third displacement (s = 3) of a 32px interrogation area, we can obtain a $\Delta t$ as follows:
+
+\begin{equation}
+    \Delta t = \frac{32 (px)}{3} \times 0.05 (mm/px) \times \frac{1}{5000 (mm/s)} \approx 100 \mu s
+\end{equation}
+
+
+\section*{Appendix B: Data validation}
+The uncertainity in PIV measurements error is very sensitive to many parameters, including the number of particles, amount of out-of-plane motion, and shear rates. Hence, on processing a PIV acquisition, a certain percentage of displacement vectors will be obviously incorrect to casual inspection. Typically, these failures are due to either an insufficient number of particles in a given window, or the shear and rotation being too large for a simple translation to capture the average motion. Although tuning the experimental design can help reduce the number of failures, due to the trade-offs required to extract the maximum amount of information from a data set, a certain level of failed correlations is inevitable. Once discovered, we want to remove as many of these failed measurements as possible so that they do not contaminate the following data analysis steps, while removing as few correct measurements as possible. \\
+
+Several methods are available for the validation of PIV data fields. Most commonly, outlier data may be removed and replaced manually by choosing an acceptable velocity range or filtering for the IA cross-correlation coefficient.
+
+Alternatively, individual measurements can be evaluated based on characteristics of the image cross-correlation procedure that generated them. Such a procedure should capture both statistical outliers and those incorrect measurements that remain close to the local mean. This is often done based on the peak ratio, or detectability, of the correlation plane. The peak ratio is typically defined as the ratio in heights of the primary to the secondary peaks. The peak ratio may be calculated based on either the mean of the secondary peaks or the maximum value of the secondary peaks. \\
+
+Since the peak height grows relative to background noise as the number of correlated particles increases, a larger value should indicate a more reliable measurement. It is typically assumed for standard cross-correlation that peak ratios above 1.2 could be considered reliably valid, whereas if failed measurements are to be avoided, vectors with peak ratios below 2.0 could be discarded. The exact value can be left as a tuning parameter for the user.
+
+\section*{Appendix C: Scaling in turbulent jet flows}
+Whenever a moving fluid enters a quiescent body of the same fluid, a velocity shear is created between the entering and ambient fluids, causing turbulence and mixing, thus giving rise to a jet flow. The ideal case of a jet flow is a Newtonian fluid steadily flowing through a nozzle of diameter $D$ with a consequential flat-topped velocity profile with a velocity $u_j$. There is a dominant flow direction (the axial direction $x$) and the mean cross-flow velocity is relatively small. The axial gradients are observed to be small compared to the cross-flow gradients.  \\
+
+The jet half-width $y_{0.5}$ is the cross-flow ($y$ axis) position such that:
+\begin{equation*}
+    U_{y_{0.5}} = \frac{1}{2} U_{cl}
+\end{equation*}
+where $U_{cl}$ is the centre-line velocity.
+
+The jet half-width in addition to being a quantitative measure of the jet dimension also serves as a scaling factor for jet velocity profiles. Experimental investigations of fully developed planar jet flows have shown that profiles of centre-line time-averaged axial velocity ($U/U_{cl}$) plotted against half-width normalised cross-flow position ($y/y_{0.5}$) collapse onto a single curve (characteristic of self-similarity). Students are required to compute such profiles and comment on the results.\\ 
+
+Furthermore, the spreading rate ($S$) may be defined in terms of the half-width as:
+\begin{equation*}
+    S = \frac{d y_{0.5}(x)}{dx}
+\end{equation*}
+
+Experimental data from fully developed planar jets shows that the spreading rate is a constant. Students are required to calculate the spreading rate from the time-averaged velocity field and comment on the results. 
+
+\section*{Appendix D: MATLAB and python code for post-processing and analysis}
+
+The MATLAB code used during the lecture as well as an interactive python notebook that details the same analysis are hosted on the following \href{https://github.com/ruthvikmagal/lecture_PIV_postproc}{repository}.
+
+
+\end{document}
