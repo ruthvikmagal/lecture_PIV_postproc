@@ -9,6 +9,10 @@ Follow the comments/instructions in the .m file.
 
 
 Tutorial instructions for python:
+Prerequisites: SciPy, NumPy and matplotlib.
+Place PaIRS output inside a folder called "Dataset".
+Make an empty folder called "Frames" and place anim.bat inside.
+Run the post-processing script/notebook.
 
 In case of doubt, refer to the example dataset included with the notebook.
 
